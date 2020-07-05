@@ -1,2 +1,2 @@
 # android-architecture-mvvm
-Simple android architecture with Jetpack
+Android architecture with Jetpack and test cases with most common modules.
