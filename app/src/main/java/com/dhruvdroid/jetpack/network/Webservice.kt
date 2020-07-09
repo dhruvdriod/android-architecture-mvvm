@@ -1,5 +1,6 @@
-package com.dhruvdroid.jetpack.jetpack
+package com.dhruvdroid.jetpack.network
 
+import com.dhruvdroid.jetpack.jetpack.User
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

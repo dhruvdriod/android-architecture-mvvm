@@ -1,41 +1,46 @@
 package com.dhruvdroid.jetpack.ui.login
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.dhruv_droid.jetpack.R
+import com.dhruv_droid.jetpack.databinding.FragmentLoginBinding
+import kotlinx.android.synthetic.main.fragment_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var binding: FragmentLoginBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        setContentView(R.layout.activity_login)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
-        val username = findViewById<EditText>(R.id.username)
-        val password = findViewById<EditText>(R.id.password)
-        val login = findViewById<Button>(R.id.login)
-        val loading = findViewById<ProgressBar>(R.id.loading)
+        ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
 
-        loginViewModel = ViewModelProviders.of(this,
-            LoginViewModelFactory()
-        )
-                .get(LoginViewModel::class.java)
+        return binding.root
+    }
 
-        loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        loginViewModel.loginFormState.observe(viewLifecycleOwner, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
@@ -49,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
+        loginViewModel.loginResult.observe(viewLifecycleOwner, Observer {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
@@ -59,24 +64,24 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
-            setResult(Activity.RESULT_OK)
+            // setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-            finish()
+            // finish()
         })
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                username.text.toString(),
+                password.text.toString()
             )
         }
 
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                        username.text.toString(),
-                        password.text.toString()
+                    username.text.toString(),
+                    password.text.toString()
                 )
             }
 
@@ -84,8 +89,8 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                                username.text.toString(),
-                                password.text.toString()
+                            username.text.toString(),
+                            password.text.toString()
                         )
                 }
                 false
@@ -103,14 +108,14 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
-                applicationContext,
-                "$welcome $displayName",
-                Toast.LENGTH_LONG
+            context,
+            "$welcome $displayName",
+            Toast.LENGTH_LONG
         ).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, errorString, Toast.LENGTH_SHORT).show()
     }
 }
 

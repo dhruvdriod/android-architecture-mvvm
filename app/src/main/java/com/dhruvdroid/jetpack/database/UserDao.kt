@@ -1,10 +1,11 @@
-package com.dhruvdroid.jetpack.jetpack
+package com.dhruvdroid.jetpack.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
+import com.dhruvdroid.jetpack.jetpack.User
 
 //
 // Created by Dhruv on 26/06/20.

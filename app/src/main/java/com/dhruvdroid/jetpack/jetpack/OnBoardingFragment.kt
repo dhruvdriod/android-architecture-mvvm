@@ -11,7 +11,7 @@ class OnBoardingFragment : Fragment() {
 //    private val viewModel: OnBoardingViewModel by viewModel()
 //
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-//        return inflater.inflate(R.layout.activity_login, container, false)
+//        return inflater.inflate(R.layout.activity_home, container, false)
 //    }
 //
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
