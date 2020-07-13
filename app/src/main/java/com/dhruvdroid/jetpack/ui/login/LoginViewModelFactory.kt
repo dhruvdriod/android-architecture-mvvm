@@ -2,8 +2,6 @@ package com.dhruvdroid.jetpack.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dhruvdroid.jetpack.data.LoginDataSource
-import com.dhruvdroid.jetpack.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

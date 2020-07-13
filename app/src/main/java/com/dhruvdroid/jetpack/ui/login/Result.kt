@@ -1,4 +1,4 @@
-package com.dhruvdroid.jetpack.data
+package com.dhruvdroid.jetpack.ui.login
 
 /**
  * A generic class that holds a value with its loading status.

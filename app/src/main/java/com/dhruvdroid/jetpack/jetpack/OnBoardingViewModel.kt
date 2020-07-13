@@ -3,7 +3,8 @@ package com.dhruvdroid.jetpack.jetpack
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.dhruvdroid.jetpack.network.UserRepository
+import com.dhruvdroid.jetpack.userProfile.User
+import com.dhruvdroid.jetpack.userProfile.UserRepository
 import javax.inject.Inject
 
 //
@@ -15,9 +16,3 @@ class OnBoardingViewModel @Inject constructor(savedStateHandle: SavedStateHandle
     val userId: String = savedStateHandle["uid"] ?: throw IllegalArgumentException("missing user id")
     val user: LiveData<User> = userRepository.getUser(userId)
 }
-
-//private val viewModel : OnBoardingViewModel by viewModel(factoryProducer = {SavedStateVMFactory(this)})
-
-// UserProfileFragment
-//private val viewModel: OnBoardingViewModel by viewModels(factoryProducer = { SavedStateVMFactory(this)
-//})

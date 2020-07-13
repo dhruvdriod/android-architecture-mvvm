@@ -1,4 +1,4 @@
-package com.dhruvdroid.jetpack.data
+package com.dhruvdroid.jetpack.ui.login
 
 import com.dhruvdroid.jetpack.data.model.LoggedInUser
 import java.io.IOException

@@ -16,8 +16,7 @@ import androidx.lifecycle.MediatorLiveData
  * @param <RequestType>
  */
 
-abstract class NetworkBoundResource<ResultType, RequestType>
-@MainThread constructor(private val appExecutors: AppExecutors) {
+abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constructor(private val appExecutors: AppExecutors) {
 
     private val result = MediatorLiveData<Resource<ResultType>>()
 

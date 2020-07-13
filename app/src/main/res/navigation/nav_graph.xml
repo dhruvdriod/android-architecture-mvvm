@@ -3,29 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/placeholder">
+    app:startDestination="@id/loginFragment">
 
-
-    <fragment android:id="@+id/placeholder"
-        tools:layout="@layout/activity_home">
-        <action
-            android:id="@+id/action_placeholder_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment"
-            />
-    </fragment>
 
     <fragment
-        android:id="@+id/onBoardingFragment"
-        android:name="com.dhruvdroid.jetpack.jetpack.OnBoardingFragment"
-        android:label="OnBoardingFragment"
+        android:id="@+id/loginFragment"
+        android:name="com.dhruvdroid.jetpack.ui.login.LoginFragment"
+        android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_onBoardingFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
+            android:id="@+id/action_loginFragment_to_placeholder"
+            app:destination="@id/placeholder" />
+
     </fragment>
 
-    <fragment
-        android:id="@+id/userProfileFragment"
-        android:name="com.dhruvdroid.jetpack.fragment.UserProfileFragment"
-        android:label="UserProfileFragment" />
+    <fragment android:id="@+id/placeholder" />
+
 </navigation>

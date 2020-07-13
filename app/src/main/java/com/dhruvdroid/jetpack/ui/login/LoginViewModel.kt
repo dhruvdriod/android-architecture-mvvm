@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dhruv_droid.jetpack.R
-import com.dhruvdroid.jetpack.data.LoginRepository
-import com.dhruvdroid.jetpack.data.Result
+
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

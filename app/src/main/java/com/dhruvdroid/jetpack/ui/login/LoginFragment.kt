@@ -13,7 +13,7 @@ import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.dhruv_droid.jetpack.R
 import com.dhruv_droid.jetpack.databinding.FragmentLoginBinding
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -30,9 +30,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-
-        ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
 
         return binding.root
     }
